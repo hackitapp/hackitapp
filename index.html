@@ -29,18 +29,59 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="StartRun()">
+    <script>
+      var points = 0;
+      var upgrades = 0;
+      var rank = 0;
+      var ps = 0;
+      var comLevel = 1;
+      var serLevel = 0;
+      var bonus = 0;
+      const goodLinks = ["good1", "good2", "good3"];
+      const badLinks = ["bad1", "bad2", "bad3"];
+      var order = 1;
+      var mode = 0;
+      
+      StartRun() {
+        var mode = Math.floor(Math.random() * 3);
+        var order = Math.floor(Math.random() * 2);
+        linkA.innerText = goodLinks[mode];
+        linkB.innerText = badLinks[mode];
+      }
+      ALink() {
+        //Code
+      }
+      BLink() {
+        //Code
+      }
+      LinkRun() {
+        //Code
+      }
+      RepeatRun() {
+        //Code
+      }
+      cUp() {
+        //Code
+      }
+      sUp() {
+        //Code
+      }
+      pUp() {
+        //Code
+      }
+    </script>
     <h1>Hackit</h1>
     <div class="grid-container">
-      <div class="grid-item">Score: 00</div>
-      <div class="grid-item">Upgrades: 00</div>
-      <div class="grid-item">Rank: n/a</div>  
-      <div class="grid-item">linkA</div>
-      <div class="grid-item">linkB</div>
-      <div class="grid-item">Points/Second: 00</div>  
-      <div class="grid-item">Computer Level: 1</div>
-      <div class="grid-item">Server Level:  0</div>
-      <div class="grid-item">Programmer Bonus: 0</div>  
+      <div class="grid-item"><p>Score: 0</p></div>
+      <div class="grid-item"><p>Upgrades: 0</p></div>
+      <div class="grid-item"><p>Rank: n/a</p></div>  
+      <div class="grid-item"><input type="button" id="linkA" value="linkA" onclick="ALink()" /></div>
+      <div class="grid-item"><input type="button" id="linkB" value="linkB" onclick="BLink()" /></div>
+      <div class="grid-item"><p>Points/Second: 0</p></div>  
+      <div class="grid-item"><input type="button" id="cL" value="Computer Level: 1" onclick="cUp()" /></div>
+      <div class="grid-item"><input type="button" id="sL" value="Server Level:  0" onclick="sUp()" /></div>
+      <div class="grid-item"><input type="button" id="pB" value="Programmer Bonus: 0" onclick="pUp()" /></div>  
     </div>
 
   </body>
