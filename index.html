@@ -42,12 +42,14 @@
       const badLinks = ["bad1", "bad2", "bad3"];
       var order = 1;
       var mode = 0;
+      const aop = getElementById("linkA");
+      const bop = getElementById("linkB");
       
       StartRun() {
         mode = Math.floor(Math.random() * 3);
         order = Math.floor(Math.random() * 2);
-        linkA.value = goodLinks[mode];
-        linkB.value = badLinks[mode];
+        aop.value = goodLinks[mode];
+        bop.value = badLinks[mode];
       }
       ALink() {
         StartRun();
@@ -75,7 +77,7 @@
     <div class="grid-container">
       <div class="grid-item"><p>Score: 0</p></div>
       <div class="grid-item"><p>Upgrades: 0</p></div>
-      <div class="grid-item"><p>Rank: n/a32434</p></div>  
+      <div class="grid-item"><p>Rank: n/a</p></div>  
       <div class="grid-item"><input type="button" id="linkA" value="linkA" onclick="ALink()" /></div>
       <div class="grid-item"><input type="button" id="linkB" value="linkB" onclick="BLink()" /></div>
       <div class="grid-item"><p>Points/Second: 0</p></div>  
