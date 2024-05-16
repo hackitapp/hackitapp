@@ -46,8 +46,8 @@
       StartRun() {
         var mode = Math.floor(Math.random() * 3);
         var order = Math.floor(Math.random() * 2);
-        linkA.innerText = goodLinks[mode];
-        linkB.innerText = badLinks[mode];
+        linkA.value = goodLinks[mode];
+        linkB.value = badLinks[mode];
       }
       ALink() {
         StartRun();
