@@ -45,10 +45,10 @@
       const aop = getElementById("linkA");
       const bop = getElementById("linkB");
       
-      StartRun() {
+      function StartRun() {
         mode = Math.floor(Math.random() * 3);
         order = Math.floor(Math.random() * 2);
-        aop.value = goodLinks[1];
+        //aop.value = goodLinks[1];
         bop.value = badLinks[mode];
       }
       ALink() {
@@ -72,13 +72,23 @@
       pUp() {
         //Code
       }
+      
+		/*  function changeLabel() {
+			const button = document.getElementById("testbutton");
+			button.innerHTML = 'Button Clicked!';
+		  } */
+	
     </script>
     <h1>Hackit</h1>
     <div class="grid-container">
       <div class="grid-item"><p>Score: 0</p></div>
       <div class="grid-item"><p>Upgrades: 0</p></div>
       <div class="grid-item"><p>Rank: n/a</p></div>  
-      <div class="grid-item"><input type="button" id="linkA" value="linkA" onclick="ALink()" /></div>
+      <div class="grid-item">
+        <button onclick="changeLabel()" id="testbutton"> 
+    		  Click me
+    	  </button> 
+      </div>
       <div class="grid-item"><input type="button" id="linkB" value="linkB" onclick="BLink()" /></div>
       <div class="grid-item"><p>Points/Second: 0</p></div>  
       <div class="grid-item"><input type="button" id="cL" value="Computer Level: 1" onclick="cUp()" /></div>
