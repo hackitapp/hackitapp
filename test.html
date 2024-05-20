@@ -12,14 +12,6 @@
 			margin: 40px;
 		}
 
-		h1 {
-			color: green;
-		}
-
-		h3 {
-			color: #333;
-		}
-
 		button {
 			padding: 10px 20px;
 			font-size: 16px;
@@ -37,17 +29,12 @@
 </head>
 
 <body>
-	<h1>GeeksforGeeks</h1>
-	<h3>
-		Using innerHTML property
-	</h3>
 	<button onclick="changeLabel()">
 		Click me
 	</button>
 	<script>
 		function changeLabel() {
-			const button = 
-				document.querySelector('button');
+			const button = document.getElementById('testbutton');
 			button.innerHTML = 'Button Clicked!';
 		}
 	</script>
