@@ -29,12 +29,12 @@
 </head>
 
 <body>
-	<button onclick="changeLabel()">
+	<button onclick="changeLabel()" id="testbutton">
 		Click me
 	</button>
 	<script>
 		function changeLabel() {
-			const button = document.getElementById('testbutton');
+			const button = document.getElementById("testbutton");
 			button.innerHTML = 'Button Clicked!';
 		}
 	</script>
