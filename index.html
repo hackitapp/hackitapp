@@ -63,10 +63,12 @@
       function ALink() {
         if (order === 0) {
           points += 10; // Good link on A
+          upgrades += 1; // Earn an upgrade
         } else {
           points -= 5; // Bad link on A
         }
         updateScore();
+        updateUpgrades();
         StartRun();
       }
 
@@ -75,8 +77,10 @@
           points -= 5; // Bad link on B
         } else {
           points += 10; // Good link on B
+          upgrades += 1; // Earn an upgrade
         }
         updateScore();
+        updateUpgrades();
         StartRun();
       }
 
@@ -84,22 +88,35 @@
         document.querySelector('.grid-item:nth-child(1) p').innerText = 'Score: ' + points;
       }
 
+      function updateUpgrades() {
+        document.querySelector('.grid-item:nth-child(2) p').innerText = 'Upgrades: ' + upgrades;
+      }
+
       function cUp() {
-        comLevel++;
-        document.getElementById("cL").value = "Computer Level: " + comLevel;
-        // Additional functionality for computer upgrade
+        if (upgrades > 0) {
+          comLevel++;
+          upgrades--;
+          document.getElementById("cL").value = "Computer Level: " + comLevel;
+          updateUpgrades();
+        }
       }
 
       function sUp() {
-        serLevel++;
-        document.getElementById("sL").value = "Server Level: " + serLevel;
-        // Additional functionality for server upgrade
+        if (upgrades > 0) {
+          serLevel++;
+          upgrades--;
+          document.getElementById("sL").value = "Server Level: " + serLevel;
+          updateUpgrades();
+        }
       }
 
       function pUp() {
-        bonus++;
-        document.getElementById("pB").value = "Programmer Bonus: " + bonus;
-        // Additional functionality for programmer bonus
+        if (upgrades > 0) {
+          bonus++;
+          upgrades--;
+          document.getElementById("pB").value = "Programmer Bonus: " + bonus;
+          updateUpgrades();
+        }
       }
      
       function changeLabel() {
