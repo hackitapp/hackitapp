@@ -92,6 +92,11 @@
         document.querySelector('.grid-item:nth-child(2) p').innerText = 'Upgrades: ' + upgrades;
       }
 
+      function updatePointsPerSecond() {
+        ps = serLevel * bonus * 0.1; // Example: 0.1 points per second per server level, adjusted by bonus
+        document.querySelector('.grid-item:nth-child(6) p').innerText = 'Points/Second: ' + ps.toFixed(2);
+      }
+
       function cUp() {
         if (upgrades > 0) {
           comLevel++;
@@ -107,6 +112,7 @@
           upgrades--;
           document.getElementById("sL").value = "Server Level: " + serLevel;
           updateUpgrades();
+          updatePointsPerSecond();
         }
       }
 
@@ -116,12 +122,13 @@
           upgrades--;
           document.getElementById("pB").value = "Programmer Bonus: " + bonus;
           updateUpgrades();
+          updatePointsPerSecond();
         }
       }
 
       function startServerPoints() {
         setInterval(function() {
-          points += (serLevel * bonus) * 0.1; // Example: 0.1 points per second per server level, adjusted by bonus
+          points += ps; // Add points per second to total points
           updateScore();
         }, 1000); // 1000 ms = 1 second
       }
