@@ -33,7 +33,7 @@
     <script>
       var points = 0;
       var upgrades = 0;
-      var rank = 0;
+      var rank = "Beginner";
       var ps = 0;
       var comLevel = 1;
       var serLevel = 0;
@@ -69,6 +69,7 @@
         }
         updateScore();
         updateUpgrades();
+        updateRank();
         StartRun();
       }
 
@@ -81,6 +82,7 @@
         }
         updateScore();
         updateUpgrades();
+        updateRank();
         StartRun();
       }
 
@@ -95,6 +97,23 @@
       function updatePointsPerSecond() {
         ps = serLevel * bonus * 0.1; // Example: 0.1 points per second per server level, adjusted by bonus
         document.querySelector('.grid-item:nth-child(6) p').innerText = 'Points/Second: ' + ps.toFixed(2);
+      }
+
+      function updateRank() {
+        if (points < 100) {
+          rank = "Beginner";
+        } else if (points < 500) {
+          rank = "Novice";
+        } else if (points < 1000) {
+          rank = "Intermediate";
+        } else if (points < 5000) {
+          rank = "Advanced";
+        } else if (points < 10000) {
+          rank = "Expert";
+        } else {
+          rank = "Master";
+        }
+        document.querySelector('.grid-item:nth-child(3) p').innerText = 'Rank: ' + rank;
       }
 
       function cUp() {
@@ -130,6 +149,7 @@
         setInterval(function() {
           points += ps; // Add points per second to total points
           updateScore();
+          updateRank();
         }, 1000); // 1000 ms = 1 second
       }
 
@@ -143,7 +163,7 @@
     <div class="grid-container">
       <div class="grid-item"><p>Score: 0</p></div>
       <div class="grid-item"><p>Upgrades: 0</p></div>
-      <div class="grid-item"><p>Rank: n/a</p></div>  
+      <div class="grid-item"><p>Rank: Beginner</p></div>  
       <div class="grid-item">
         <button onclick="ALink()" id="linkA">
      linkA
