@@ -29,7 +29,7 @@
       }
     </style>
   </head>
-  <body onload="StartRun()">
+  <body onload="StartRun(); startServerPoints();">
     <script>
       var points = 0;
       var upgrades = 0;
@@ -37,7 +37,7 @@
       var ps = 0;
       var comLevel = 1;
       var serLevel = 0;
-      var bonus = 0;
+      var bonus = 1; // Multiplier starts at 1
       const goodLinks = ["good1", "good2", "good3"];
       const badLinks = ["bad1", "bad2", "bad3"];
       var order = 1;
@@ -62,7 +62,7 @@
 
       function ALink() {
         if (order === 0) {
-          points += 10; // Good link on A
+          points += (10 + comLevel) * bonus; // Good link on A
           upgrades += 1; // Earn an upgrade
         } else {
           points -= 5; // Bad link on A
@@ -76,7 +76,7 @@
         if (order === 0) {
           points -= 5; // Bad link on B
         } else {
-          points += 10; // Good link on B
+          points += (10 + comLevel) * bonus; // Good link on B
           upgrades += 1; // Earn an upgrade
         }
         updateScore();
@@ -85,7 +85,7 @@
       }
 
       function updateScore() {
-        document.querySelector('.grid-item:nth-child(1) p').innerText = 'Score: ' + points;
+        document.querySelector('.grid-item:nth-child(1) p').innerText = 'Score: ' + points.toFixed(2);
       }
 
       function updateUpgrades() {
@@ -118,7 +118,14 @@
           updateUpgrades();
         }
       }
-     
+
+      function startServerPoints() {
+        setInterval(function() {
+          points += (serLevel * bonus) * 0.1; // Example: 0.1 points per second per server level, adjusted by bonus
+          updateScore();
+        }, 1000); // 1000 ms = 1 second
+      }
+
       function changeLabel() {
         const button = document.getElementById("testbutton");
         button.innerHTML = 'Button Clicked!';
@@ -143,7 +150,7 @@
       <div class="grid-item"><p>Points/Second: 0</p></div>  
       <div class="grid-item"><input type="button" id="cL" value="Computer Level: 1" onclick="cUp()" /></div>
       <div class="grid-item"><input type="button" id="sL" value="Server Level:  0" onclick="sUp()" /></div>
-      <div class="grid-item"><input type="button" id="pB" value="Programmer Bonus: 0" onclick="pUp()" /></div>  
+      <div class="grid-item"><input type="button" id="pB" value="Programmer Bonus: 1" onclick="pUp()" /></div>  
     </div>
 
   </body>
