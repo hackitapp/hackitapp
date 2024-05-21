@@ -50,18 +50,32 @@
         var bop = document.getElementById("linkB");
         var aopVal = goodLinks[mode];
         var bopVal = badLinks[mode];
-        aop.innerHTML = aopVal;
-        bop.innerHTML = bopVal;
+
+        if (order === 0) {
+          aop.innerHTML = aopVal;
+          bop.innerHTML = bopVal;
+        } else {
+          aop.innerHTML = bopVal;
+          bop.innerHTML = aopVal;
+        }
       }
 
       function ALink() {
-        points += 10; // Assuming 10 points for good link
+        if (order === 0) {
+          points += 10; // Good link on A
+        } else {
+          points -= 5; // Bad link on A
+        }
         updateScore();
         StartRun();
       }
 
       function BLink() {
-        points -= 5; // Assuming -5 points for bad link
+        if (order === 0) {
+          points -= 5; // Bad link on B
+        } else {
+          points += 10; // Good link on B
+        }
         updateScore();
         StartRun();
       }
@@ -87,7 +101,7 @@
         document.getElementById("pB").value = "Programmer Bonus: " + bonus;
         // Additional functionality for programmer bonus
       }
-      
+     
       function changeLabel() {
         const button = document.getElementById("testbutton");
         button.innerHTML = 'Button Clicked!';
@@ -100,14 +114,14 @@
       <div class="grid-item"><p>Upgrades: 0</p></div>
       <div class="grid-item"><p>Rank: n/a</p></div>  
       <div class="grid-item">
-        <button onclick="ALink()" id="linkA"> 
-    		  linkA
-    	  </button> 
+        <button onclick="ALink()" id="linkA">
+     linkA
+     </button>
       </div>
       <div class="grid-item">
-	      <button onclick="BLink()" id="linkB"> 
-    		  linkB
-    	  	</button>
+     <button onclick="BLink()" id="linkB">
+     linkB
+      </button>
       </div>
       <div class="grid-item"><p>Points/Second: 0</p></div>  
       <div class="grid-item"><input type="button" id="cL" value="Computer Level: 1" onclick="cUp()" /></div>
