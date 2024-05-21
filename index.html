@@ -48,8 +48,12 @@
       function StartRun() {
         mode = Math.floor(Math.random() * 3);
         order = Math.floor(Math.random() * 2);
+	var aopVal = goodLinks[mode];
+	var bopVal = badLinks[mode];
+	aop.innerHTML = aopVal;
+	bop.innerHTML = bopVal;
         //aop.value = goodLinks[1];
-        bop.value = badLinks[mode];
+        //bop.value = badLinks[mode];
       }
       function ALink() {
         StartRun();
@@ -85,11 +89,15 @@
       <div class="grid-item"><p>Upgrades: 0</p></div>
       <div class="grid-item"><p>Rank: n/a</p></div>  
       <div class="grid-item">
-        <button onclick="changeLabel()" id="testbutton"> 
-    		  Click me
+        <button onclick="ALink()" id="linkA"> 
+    		  linkA
     	  </button> 
       </div>
-      <div class="grid-item"><input type="button" id="linkB" value="linkB" onclick="BLink()" /></div>
+      <div class="grid-item">
+	      <button onclick="BLink()" id="linkB"> 
+    		  linkB
+    	  	</button>
+      </div>
       <div class="grid-item"><p>Points/Second: 0</p></div>  
       <div class="grid-item"><input type="button" id="cL" value="Computer Level: 1" onclick="cUp()" /></div>
       <div class="grid-item"><input type="button" id="sL" value="Server Level:  0" onclick="sUp()" /></div>
