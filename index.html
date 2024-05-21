@@ -42,46 +42,57 @@
       const badLinks = ["bad1", "bad2", "bad3"];
       var order = 1;
       var mode = 0;
-      const aop = document.getElementById("linkA");
-      const bop = document.getElementById("linkB");
-      
+
       function StartRun() {
         mode = Math.floor(Math.random() * 3);
         order = Math.floor(Math.random() * 2);
-	var aopVal = goodLinks[mode];
-	var bopVal = badLinks[mode];
-	aop.innerHTML = aopVal;
-	bop.innerHTML = bopVal;
-        //aop.value = goodLinks[1];
-        //bop.value = badLinks[mode];
+        var aop = document.getElementById("linkA");
+        var bop = document.getElementById("linkB");
+        var aopVal = goodLinks[mode];
+        var bopVal = badLinks[mode];
+        aop.innerHTML = aopVal;
+        bop.innerHTML = bopVal;
       }
+
       function ALink() {
+        points += 10; // Assuming 10 points for good link
+        updateScore();
         StartRun();
       }
+
       function BLink() {
+        points -= 5; // Assuming -5 points for bad link
+        updateScore();
         StartRun();
       }
-      function LinkRun() {
-        //Code
+
+      function updateScore() {
+        document.querySelector('.grid-item:nth-child(1) p').innerText = 'Score: ' + points;
       }
-      function RepeatRun() {
-        //Code
-      }
+
       function cUp() {
-        //Code
+        comLevel++;
+        document.getElementById("cL").value = "Computer Level: " + comLevel;
+        // Additional functionality for computer upgrade
       }
+
       function sUp() {
-        //Code
+        serLevel++;
+        document.getElementById("sL").value = "Server Level: " + serLevel;
+        // Additional functionality for server upgrade
       }
+
       function pUp() {
-        //Code
+        bonus++;
+        document.getElementById("pB").value = "Programmer Bonus: " + bonus;
+        // Additional functionality for programmer bonus
       }
       
       function changeLabel() {
-	const button = document.getElementById("testbutton");
-	button.innerHTML = 'Button Clicked!';
+        const button = document.getElementById("testbutton");
+        button.innerHTML = 'Button Clicked!';
       }
-	
+
     </script>
     <h1>Hackit</h1>
     <div class="grid-container">
